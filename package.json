@@ -1,7 +1,7 @@
 {
   "name": "shell-context-menu",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Add a context menu item command on Windows",
   "main": "src/index.js",
   "scripts": {
     "prepublish": "npm test",
@@ -16,5 +16,23 @@
   },
   "dependencies": {
     "rage-edit": "^1.2.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tymmesyde/node-shell-context-menu.git"
+  },
+  "keywords": [
+    "shell",
+    "context",
+    "menu",
+    "command",
+    "item"
+  ],
+  "bugs": {
+    "url": "https://github.com/tymmesyde/node-shell-context-menu/issues"
+  },
+  "homepage": "https://github.com/tymmesyde/node-shell-context-menu#readme"
 }

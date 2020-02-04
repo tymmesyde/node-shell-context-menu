@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/shell-context-menu.png?compact=true)](https://npmjs.org/package/shell-context-menu)
+
 # node-shell-context-menu
 
 Add a context menu item command on Windows
@@ -21,9 +23,11 @@ const options = {
 await shellContextMenu.registerOpenWithCommand(['.jpeg', '.png'], options);
 ```
 
+*Note: It will add the file/folder as argument at the end of the command*
+
 ## registerCommand
 
-*Create a context menu item on directories and files*
+Create a context menu item on files
 
 ```js
 const options = {
@@ -38,7 +42,7 @@ await shellContextMenu.registerCommand(options);
 
 ## registerDirectoryCommand
 
-*Create a context menu item only on directories*
+Create a context menu item only on folders
 
 ```js
 const options = {
@@ -53,7 +57,7 @@ await shellContextMenu.registerDirectoryCommand(options);
 
 ## registerOpenWithCommand
 
-*Create a context menu item `OpenWith` on specific filetypes*
+Create a context menu item `OpenWith` on specific filetypes
 
 ```js
 const options = {
@@ -66,7 +70,7 @@ await shellContextMenu.registerOpenWithCommand(['.jpeg', '.png'], options);
 
 ## removeCommand
 
-*Remove a named command*
+Remove a named command
 
 ```js
 await shellContextMenu.removeCommand('Explorer');
@@ -74,7 +78,7 @@ await shellContextMenu.removeCommand('Explorer');
 
 ## removeDirectoryCommand
 
-*Remove a named directory command*
+Remove a named directory command
 
 ```js
 await shellContextMenu.removeDirectoryCommand('Explorer');
@@ -82,7 +86,7 @@ await shellContextMenu.removeDirectoryCommand('Explorer');
 
 ## removeOpenWithCommand
 
-*Remove a named `OpenWith` command for given filetypes*
+Remove a named `OpenWith` command for given filetypes
 
 ```js
 await shellContextMenu.removeOpenWithCommand(['.jpeg', '.png'], 'Explorer');

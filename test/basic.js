@@ -1,5 +1,5 @@
 const tape = require('tape');
-const { Registry } = require('rage-edit');
+const {Registry} = require('rage-edit');
 const shellContextMenu = require('../src/index');
 
 const appPath = 'C:\\Windows\\explorer.exe';
@@ -14,7 +14,7 @@ const options = {
 tape('registerCommand', async t => {
 	try {
 		await shellContextMenu.registerCommand();
-	} catch(e) {
+	} catch (e) {
 		t.equal(e.message, 'options are empty');
 	}
 
@@ -25,16 +25,17 @@ tape('registerCommand', async t => {
 	}
 
 	await shellContextMenu.registerCommand(options);
-    
+
 	t.equal(await Registry.has(`HKCU\\Software\\Classes\\*\\shell\\${options.name}`), true);
 	t.equal(await Registry.has(`HKCU\\Software\\Classes\\*\\shell\\${options.name}\\command`), true);
+	t.equal(await Registry.get(`HKCU\\Software\\Classes\\*\\shell\\${options.name}\\command`, ''), '"C:\\Windows\\explorer.exe" "%1"');
 	t.end();
 });
 
 tape('registerDirectoryCommand', async t => {
 	try {
 		await shellContextMenu.registerDirectoryCommand();
-	} catch(e) {
+	} catch (e) {
 		t.equal(e.message, 'options are empty');
 	}
 
@@ -45,16 +46,17 @@ tape('registerDirectoryCommand', async t => {
 	}
 
 	await shellContextMenu.registerDirectoryCommand(options);
-    
+
 	t.equal(await Registry.has(`HKCU\\Software\\Classes\\Directory\\shell\\${options.name}`), true);
 	t.equal(await Registry.has(`HKCU\\Software\\Classes\\Directory\\shell\\${options.name}\\command`), true);
+	t.equal(await Registry.get(`HKCU\\Software\\Classes\\Directory\\shell\\${options.name}\\command`, ''), '"C:\\Windows\\explorer.exe" "%1"');
 	t.end();
 });
 
 tape('registerOpenWithCommand', async t => {
 	try {
 		await shellContextMenu.registerOpenWithCommand();
-	} catch(e) {
+	} catch (e) {
 		t.equal(e.message, 'extensions is not specified');
 	}
 
@@ -64,8 +66,8 @@ tape('registerOpenWithCommand', async t => {
 		t.equal(e.message, 'options are empty');
 	}
 
-	await shellContextMenu.registerOpenWithCommand(extensions, { name: options.name, command: options.command });
-    
+	await shellContextMenu.registerOpenWithCommand(extensions, {name: options.name, command: options.command});
+
 	t.equal(await Registry.has(`HKCU\\Software\\Classes\\jpegfile\\shell\\${options.name}`), true);
 	t.equal(await Registry.has(`HKCU\\Software\\Classes\\jpegfile\\shell\\${options.name}\\command`), true);
 	t.end();

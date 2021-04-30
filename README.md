@@ -26,15 +26,15 @@ await shellContextMenu.registerOpenWithCommand(['.jpeg', '.png'], options);
 const shellContextMenu = require('shell-context-menu');
 
 const options = {
-    name: 'MyApp2',
+    name: 'MyScript',
     command: 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe',
-    args: ['-WindowStyle','hidden','C:\\Users\\Default\\Documents\\do_some_task_and_open_target.ps1']
+    args: ['-WindowStyle','hidden','C:\\Users\\Default\\Documents\\do_some_task_and_open_it.ps1']
 };
 
 await shellContextMenu.registerOpenWithCommand(['.txt'], options);
 ```
 
-*Note: It will add the file/folder as argument at the end of the command*
+*Note: It will add the file/folder as argument at the end of the command or args*
 
 ## registerCommand
 
